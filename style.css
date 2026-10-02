@@ -1,0 +1,2549 @@
+/* =========================================================
+   MI COMPRA
+   CSS PRINCIPAL
+   Diseño profesional · Mobile First
+========================================================= */
+
+
+/* =========================================================
+   VARIABLES
+========================================================= */
+
+:root {
+
+    --color-principal: #23844a;
+    --color-principal-oscuro: #176637;
+    --color-principal-claro: #e9f6ee;
+    --color-principal-muy-claro: #f5fbf7;
+
+    --color-secundario: #f3f6f4;
+
+    --color-fondo: #eef2ef;
+    --color-superficie: #ffffff;
+
+    --color-texto: #1d2520;
+    --color-texto-secundario: #68736c;
+    --color-texto-suave: #929b95;
+
+    --color-borde: #dfe6e1;
+    --color-borde-fuerte: #cdd8d0;
+
+    --color-peligro: #d83b3b;
+    --color-peligro-claro: #fff0f0;
+
+    --color-aviso: #e39b20;
+    --color-aviso-claro: #fff7e5;
+
+    --color-exito: #23844a;
+    --color-exito-claro: #e9f6ee;
+
+    --sombra-suave:
+        0 2px 8px rgba(25, 45, 32, 0.055);
+
+    --sombra-media:
+        0 6px 20px rgba(25, 45, 32, 0.09);
+
+    --sombra-fuerte:
+        0 15px 40px rgba(25, 45, 32, 0.15);
+
+    --sombra-modal:
+        0 18px 50px rgba(0, 0, 0, 0.20);
+
+    --radio-pequeno: 8px;
+    --radio: 12px;
+    --radio-grande: 18px;
+    --radio-xl: 22px;
+
+    --altura-navegacion: 60px;
+    --altura-cabecera: 70px;
+
+    --transicion: 0.18s ease;
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+html {
+    min-height: 100%;
+    font-size: 16px;
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+}
+
+
+body {
+
+    min-height: 100vh;
+
+    background:
+        linear-gradient(
+            180deg,
+            #f5f8f6 0,
+            var(--color-fondo) 300px
+        );
+
+    color: var(--color-texto);
+
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Helvetica,
+        Arial,
+        sans-serif;
+
+    line-height: 1.4;
+
+    overflow-x: hidden;
+
+    padding-bottom: 25px;
+
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+
+button,
+select,
+input {
+    -webkit-tap-highlight-color: transparent;
+}
+
+
+button {
+    font-family: inherit;
+}
+
+
+button:focus-visible,
+select:focus-visible,
+input:focus-visible {
+    outline: 3px solid rgba(35, 132, 74, 0.16);
+    outline-offset: 2px;
+}
+
+
+/* =========================================================
+   CABECERA
+========================================================= */
+
+.cabecera {
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 100;
+
+    background:
+        rgba(255, 255, 255, 0.96);
+
+    border-bottom:
+        1px solid var(--color-borde);
+
+    backdrop-filter:
+        blur(14px);
+
+    -webkit-backdrop-filter:
+        blur(14px);
+
+}
+
+
+.cabecera-contenido {
+
+    width: 100%;
+
+    max-width: 1180px;
+
+    margin: 0 auto;
+
+    min-height:
+        var(--altura-cabecera);
+
+    padding:
+        10px 16px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 12px;
+
+}
+
+
+/* =========================================================
+   LOGO
+========================================================= */
+
+.logo {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 11px;
+
+    min-width: 0;
+
+}
+
+
+.logo-icono {
+
+    width: 43px;
+
+    height: 43px;
+
+    border-radius: 13px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--color-principal-claro),
+            #dff2e6
+        );
+
+    color:
+        var(--color-principal-oscuro);
+
+    font-size: 23px;
+
+    flex-shrink: 0;
+
+    box-shadow:
+        inset 0 0 0 1px rgba(35, 132, 74, 0.05);
+
+}
+
+
+.logo h1 {
+
+    font-size: 19px;
+
+    line-height: 1.1;
+
+    font-weight: 800;
+
+    letter-spacing: -0.25px;
+
+}
+
+
+.logo p {
+
+    margin-top: 3px;
+
+    font-size: 11px;
+
+    color:
+        var(--color-texto-secundario);
+
+}
+
+
+/* =========================================================
+   ESTADO DE CONEXIÓN
+========================================================= */
+
+.estado-conexion {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    padding:
+        6px 9px;
+
+    border:
+        1px solid var(--color-borde);
+
+    border-radius:
+        999px;
+
+    background:
+        rgba(255, 255, 255, 0.75);
+
+    font-size: 10px;
+
+    color:
+        var(--color-texto-secundario);
+
+    white-space: nowrap;
+
+}
+
+
+.estado-punto {
+
+    width: 7px;
+
+    height: 7px;
+
+    border-radius: 50%;
+
+    background:
+        var(--color-exito);
+
+    flex-shrink: 0;
+
+    box-shadow:
+        0 0 0 3px rgba(35, 132, 74, 0.10);
+
+}
+
+
+.estado-conexion.sin-conexion
+.estado-punto {
+
+    background:
+        var(--color-aviso);
+
+    box-shadow:
+        0 0 0 3px rgba(227, 155, 32, 0.10);
+
+}
+
+
+.estado-conexion.error
+.estado-punto {
+
+    background:
+        var(--color-peligro);
+
+    box-shadow:
+        0 0 0 3px rgba(216, 59, 59, 0.10);
+
+}
+
+
+/* =========================================================
+   NAVEGACIÓN SUPERIOR
+   LISTA / PRODUCTOS
+========================================================= */
+
+.navegacion-inferior {
+
+    position: sticky;
+
+    top:
+        var(--altura-cabecera);
+
+    z-index: 90;
+
+    width: 100%;
+
+    height:
+        var(--altura-navegacion);
+
+    background:
+        rgba(255, 255, 255, 0.97);
+
+    border-bottom:
+        1px solid var(--color-borde);
+
+    display: flex;
+
+    align-items: stretch;
+
+    justify-content: center;
+
+    box-shadow:
+        0 3px 12px rgba(25, 45, 32, 0.055);
+
+    backdrop-filter:
+        blur(14px);
+
+    -webkit-backdrop-filter:
+        blur(14px);
+
+}
+
+
+/* Cada botón */
+
+.nav-item {
+
+    position: relative;
+
+    flex: 1;
+
+    max-width: 240px;
+
+    border: none;
+
+    background: transparent;
+
+    color:
+        var(--color-texto-secundario);
+
+    font-family: inherit;
+
+    cursor: pointer;
+
+    display: flex;
+
+    flex-direction: row;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    transition:
+        background var(--transicion),
+        color var(--transicion);
+
+}
+
+
+.nav-item:hover {
+
+    background:
+        var(--color-principal-muy-claro);
+
+    color:
+        var(--color-principal);
+
+}
+
+
+.nav-item:active {
+
+    background:
+        var(--color-principal-claro);
+
+}
+
+
+/* Icono */
+
+.nav-icono {
+
+    font-size: 20px;
+
+    line-height: 1;
+
+}
+
+
+/* Texto */
+
+.nav-texto {
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+}
+
+
+/* Botón activo */
+
+.nav-item.activo {
+
+    color:
+        var(--color-principal-oscuro);
+
+}
+
+
+/* Línea inferior del botón activo */
+
+.nav-item.activo::before {
+
+    content: "";
+
+    position: absolute;
+
+    left: 20%;
+
+    right: 20%;
+
+    bottom: 0;
+
+    height: 3px;
+
+    border-radius:
+        4px 4px 0 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--color-principal-oscuro),
+            var(--color-principal)
+        );
+
+}
+
+
+/* Contador */
+
+.contador-nav {
+
+    position: relative;
+
+    top: auto;
+
+    margin-left: 1px;
+
+    min-width: 20px;
+
+    height: 20px;
+
+    padding:
+        0 5px;
+
+    border-radius: 999px;
+
+    background:
+        var(--color-principal);
+
+    color: white;
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    box-shadow:
+        0 2px 5px rgba(35, 132, 74, 0.18);
+
+}
+
+
+.contador-nav:empty {
+
+    display: none;
+
+}
+
+
+/* =========================================================
+   CONTENIDO
+========================================================= */
+
+.contenido {
+
+    width: 100%;
+
+    max-width: 1180px;
+
+    margin: 0 auto;
+
+    padding:
+        22px 14px 35px;
+
+}
+
+
+/* =========================================================
+   PÁGINAS
+========================================================= */
+
+.pagina {
+
+    display: none;
+
+    animation:
+        aparecer 0.18s ease;
+
+}
+
+
+.pagina.activa {
+
+    display: block;
+
+}
+
+
+@keyframes aparecer {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(5px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+
+/* =========================================================
+   TÍTULO DE PÁGINA
+========================================================= */
+
+.titulo-pagina {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 12px;
+
+    margin-bottom: 17px;
+
+}
+
+
+.titulo-pagina h2 {
+
+    font-size: 25px;
+
+    line-height: 1.15;
+
+    font-weight: 800;
+
+    letter-spacing: -0.4px;
+
+}
+
+
+.titulo-pagina p {
+
+    margin-top: 4px;
+
+    font-size: 13px;
+
+    color:
+        var(--color-texto-secundario);
+
+}
+
+
+/* =========================================================
+   BUSCADORES
+========================================================= */
+
+.buscador {
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    width: 100%;
+
+    min-height: 51px;
+
+    margin-bottom: 11px;
+
+    background:
+        var(--color-superficie);
+
+    border:
+        1px solid var(--color-borde);
+
+    border-radius:
+        var(--radio);
+
+    box-shadow:
+        var(--sombra-suave);
+
+    transition:
+        border-color var(--transicion),
+        box-shadow var(--transicion);
+
+}
+
+
+.buscador:focus-within {
+
+    border-color:
+        var(--color-principal);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(35, 132, 74, 0.09);
+
+}
+
+
+.icono-busqueda {
+
+    width: 44px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 18px;
+
+    flex-shrink: 0;
+
+}
+
+
+.buscador input {
+
+    width: 100%;
+
+    height: 49px;
+
+    border: none;
+
+    outline: none;
+
+    background: transparent;
+
+    color:
+        var(--color-texto);
+
+    font-size: 14px;
+
+    padding:
+        0 4px;
+
+}
+
+
+.buscador input::placeholder {
+
+    color:
+        var(--color-texto-suave);
+
+}
+
+
+.btn-limpiar-busqueda {
+
+    width: 38px;
+
+    height: 38px;
+
+    margin-right: 5px;
+
+    border: none;
+
+    background: transparent;
+
+    color:
+        var(--color-texto-suave);
+
+    font-size: 22px;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+}
+
+
+.btn-limpiar-busqueda:hover {
+
+    background:
+        var(--color-secundario);
+
+    color:
+        var(--color-texto);
+
+}
+
+
+/* =========================================================
+   FILTROS
+========================================================= */
+
+.filtros-productos {
+
+    display: grid;
+
+    grid-template-columns:
+        1fr;
+
+    gap: 8px;
+
+    margin-bottom: 15px;
+
+}
+
+
+select {
+
+    width: 100%;
+
+    min-height: 46px;
+
+    border:
+        1px solid var(--color-borde);
+
+    border-radius:
+        var(--radio);
+
+    background:
+        var(--color-superficie);
+
+    color:
+        var(--color-texto);
+
+    padding:
+        0 13px;
+
+    font-size: 13px;
+
+    outline: none;
+
+    cursor: pointer;
+
+    transition:
+        border-color var(--transicion),
+        box-shadow var(--transicion);
+
+}
+
+
+select:hover {
+
+    border-color:
+        var(--color-borde-fuerte);
+
+}
+
+
+select:focus {
+
+    border-color:
+        var(--color-principal);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(35, 132, 74, 0.09);
+
+}
+
+
+/* =========================================================
+   BOTONES
+========================================================= */
+
+.btn {
+
+    min-height: 44px;
+
+    padding:
+        0 15px;
+
+    border-radius:
+        var(--radio);
+
+    border:
+        1px solid transparent;
+
+    font-family: inherit;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 7px;
+
+    transition:
+        transform var(--transicion),
+        background var(--transicion),
+        border-color var(--transicion),
+        box-shadow var(--transicion),
+        color var(--transicion);
+
+}
+
+
+.btn:hover {
+
+    transform:
+        translateY(-1px);
+
+}
+
+
+.btn:active {
+
+    transform:
+        translateY(0)
+        scale(0.98);
+
+}
+
+
+.btn-principal {
+
+    color: white;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--color-principal),
+            var(--color-principal-oscuro)
+        );
+
+    border-color:
+        var(--color-principal);
+
+    box-shadow:
+        0 3px 8px
+        rgba(35, 132, 74, 0.18);
+
+}
+
+
+.btn-principal:hover {
+
+    box-shadow:
+        0 5px 13px
+        rgba(35, 132, 74, 0.25);
+
+}
+
+
+.btn-secundario {
+
+    color:
+        var(--color-texto);
+
+    background:
+        var(--color-superficie);
+
+    border-color:
+        var(--color-borde);
+
+}
+
+
+.btn-secundario:hover {
+
+    background:
+        var(--color-secundario);
+
+    border-color:
+        var(--color-borde-fuerte);
+
+}
+
+
+.btn-peligro {
+
+    color:
+        var(--color-peligro);
+
+    background:
+        var(--color-peligro-claro);
+
+    border-color:
+        #f1caca;
+
+}
+
+
+.btn-peligro:hover {
+
+    background:
+        #ffe4e4;
+
+}
+
+
+.btn-nuevo {
+
+    min-height: 43px;
+
+    padding:
+        0 13px;
+
+}
+
+
+.btn-nuevo span:first-child {
+
+    font-size: 19px;
+
+    line-height: 1;
+
+}
+
+
+/* =========================================================
+   RESULTADOS DE BÚSQUEDA
+========================================================= */
+
+.resultados-busqueda {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 7px;
+
+    margin-bottom: 13px;
+
+}
+
+
+.resultados-busqueda:empty {
+
+    display: none;
+
+}
+
+
+/* =========================================================
+   RESULTADO DE PRODUCTO
+========================================================= */
+
+.resultado-producto {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 10px;
+
+    padding:
+        11px 12px;
+
+    background:
+        var(--color-superficie);
+
+    border:
+        1px solid var(--color-borde);
+
+    border-radius:
+        var(--radio);
+
+    box-shadow:
+        var(--sombra-suave);
+
+    transition:
+        border-color var(--transicion),
+        background var(--transicion),
+        transform var(--transicion),
+        box-shadow var(--transicion);
+
+}
+
+
+.resultado-producto:hover {
+
+    border-color:
+        rgba(35, 132, 74, 0.35);
+
+    background:
+        var(--color-principal-muy-claro);
+
+    transform:
+        translateY(-1px);
+
+    box-shadow:
+        var(--sombra-media);
+
+}
+
+
+.resultado-info {
+
+    min-width: 0;
+
+    flex: 1;
+
+}
+
+
+.resultado-nombre {
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+
+}
+
+
+.resultado-detalle {
+
+    margin-top: 3px;
+
+    font-size: 11px;
+
+    color:
+        var(--color-texto-secundario);
+
+}
+
+
+.btn-anadir {
+
+    min-width: 42px;
+
+    width: 42px;
+
+    height: 42px;
+
+    padding: 0;
+
+    border-radius: 50%;
+
+    flex-shrink: 0;
+
+    font-size: 22px;
+
+}
+
+
+/* =========================================================
+   LISTA DE PRODUCTOS
+========================================================= */
+
+.lista-productos,
+.catalogo-productos {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 9px;
+
+}
+
+
+/* =========================================================
+   TARJETA DE PRODUCTO
+========================================================= */
+
+.producto-card {
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 11px;
+
+    padding:
+        13px;
+
+    background:
+        var(--color-superficie);
+
+    border:
+        1px solid var(--color-borde);
+
+    border-radius:
+        var(--radio);
+
+    box-shadow:
+        var(--sombra-suave);
+
+    transition:
+        opacity var(--transicion),
+        transform var(--transicion),
+        background var(--transicion),
+        border-color var(--transicion),
+        box-shadow var(--transicion);
+
+}
+
+
+.producto-card:hover {
+
+    border-color:
+        var(--color-borde-fuerte);
+
+    box-shadow:
+        var(--sombra-media);
+
+    transform:
+        translateY(-1px);
+
+}
+
+
+/* =========================================================
+   PRODUCTO COMPRADO
+========================================================= */
+
+.producto-card.comprado {
+
+    background:
+        #f5f8f5;
+
+    opacity: 0.70;
+
+}
+
+
+.producto-card.comprado
+.producto-nombre {
+
+    text-decoration:
+        line-through;
+
+    color:
+        var(--color-texto-secundario);
+
+}
+
+
+/* =========================================================
+   FAVORITO
+========================================================= */
+
+.producto-card.preferente {
+
+    border-left:
+        3px solid #d9a329;
+
+    background:
+        #fffdf7;
+
+}
+
+
+/* =========================================================
+   ICONO PRODUCTO
+========================================================= */
+
+.producto-icono {
+
+    width: 46px;
+
+    height: 46px;
+
+    border-radius:
+        12px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--color-principal-claro),
+            #f2faf5
+        );
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 21px;
+
+    flex-shrink: 0;
+
+}
+
+
+/* =========================================================
+   INFORMACIÓN PRODUCTO
+========================================================= */
+
+.producto-info {
+
+    min-width: 0;
+
+    flex: 1;
+
+}
+
+
+.producto-nombre {
+
+    font-size: 15px;
+
+    font-weight: 750;
+
+    line-height: 1.25;
+
+    word-break: break-word;
+
+}
+
+
+.producto-detalles {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    align-items: center;
+
+    gap: 5px;
+
+    margin-top: 5px;
+
+}
+
+
+.etiqueta {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    min-height: 21px;
+
+    padding:
+        0 7px;
+
+    border-radius:
+        6px;
+
+    background:
+        var(--color-secundario);
+
+    color:
+        var(--color-texto-secundario);
+
+    font-size: 10px;
+
+    font-weight: 650;
+
+}
+
+
+.etiqueta-supermercado {
+
+    background:
+        #f1f5fb;
+
+    color:
+        #5d6978;
+
+}
+
+
+/* =========================================================
+   CONTROLES DE PRODUCTO
+========================================================= */
+
+.producto-controles {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 4px;
+
+    flex-shrink: 0;
+
+}
+
+
+.btn-icono {
+
+    width: 37px;
+
+    height: 37px;
+
+    padding: 0;
+
+    border: none;
+
+    border-radius:
+        9px;
+
+    background:
+        transparent;
+
+    color:
+        var(--color-texto-secundario);
+
+    font-size: 17px;
+
+    cursor: pointer;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    transition:
+        background var(--transicion),
+        color var(--transicion),
+        transform var(--transicion);
+
+}
+
+
+.btn-icono:hover {
+
+    background:
+        var(--color-secundario);
+
+    color:
+        var(--color-texto);
+
+}
+
+
+.btn-icono:active {
+
+    transform:
+        scale(0.92);
+
+}
+
+
+.btn-favorito.activo {
+
+    color:
+        #d39a00;
+
+    background:
+        #fff6d5;
+
+}
+
+
+.btn-comprado.activo {
+
+    color:
+        var(--color-exito);
+
+    background:
+        var(--color-exito-claro);
+
+}
+
+
+.btn-eliminar:hover {
+
+    color:
+        var(--color-peligro);
+
+    background:
+        var(--color-peligro-claro);
+
+}
+
+
+/* =========================================================
+   CONTROLES DE CANTIDAD
+========================================================= */
+
+.controles-cantidad {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 4px;
+
+    margin-top: 8px;
+
+}
+
+
+.btn-cantidad {
+
+    width: 33px;
+
+    height: 33px;
+
+    padding: 0;
+
+    border:
+        1px solid var(--color-borde);
+
+    border-radius:
+        9px;
+
+    background:
+        var(--color-superficie);
+
+    color:
+        var(--color-texto);
+
+    font-size: 18px;
+
+    font-weight: 650;
+
+    cursor: pointer;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    transition:
+        background var(--transicion),
+        border-color var(--transicion);
+
+}
+
+
+.btn-cantidad:hover {
+
+    background:
+        var(--color-principal-muy-claro);
+
+    border-color:
+        var(--color-principal);
+
+}
+
+
+.cantidad {
+
+    min-width: 40px;
+
+    height: 33px;
+
+    padding:
+        0 5px;
+
+    border-radius:
+        9px;
+
+    background:
+        var(--color-principal-claro);
+
+    color:
+        var(--color-principal-oscuro);
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+}
+
+
+/* =========================================================
+   ACCIONES DE COMPRA
+========================================================= */
+
+.acciones-compra {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 9px;
+
+    margin-top: 18px;
+
+    padding-top: 16px;
+
+    border-top:
+        1px solid var(--color-borde);
+
+}
+
+
+.acciones-compra .btn {
+
+    width: 100%;
+
+}
+
+
+/* =========================================================
+   ESTADO VACÍO
+========================================================= */
+
+.estado-vacio {
+
+    padding:
+        45px 20px;
+
+    text-align: center;
+
+    background:
+        rgba(255, 255, 255, 0.75);
+
+    border:
+        1px dashed var(--color-borde);
+
+    border-radius:
+        var(--radio-grande);
+
+    margin-top: 12px;
+
+}
+
+
+.estado-vacio-icono {
+
+    width: 68px;
+
+    height: 68px;
+
+    margin:
+        0 auto 15px;
+
+    border-radius:
+        20px;
+
+    background:
+        var(--color-principal-claro);
+
+    color:
+        var(--color-principal-oscuro);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 30px;
+
+}
+
+
+.estado-vacio h3 {
+
+    font-size: 17px;
+
+    font-weight: 750;
+
+    margin-bottom: 6px;
+
+}
+
+
+.estado-vacio p {
+
+    max-width: 340px;
+
+    margin:
+        0 auto 17px;
+
+    color:
+        var(--color-texto-secundario);
+
+    font-size: 13px;
+
+}
+
+
+/* =========================================================
+   MODALES
+========================================================= */
+
+.modal {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 500;
+
+    display: none;
+
+    align-items: flex-end;
+
+    justify-content: center;
+
+}
+
+
+.modal.visible {
+
+    display: flex;
+
+}
+
+
+.modal-fondo {
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        rgba(15, 25, 19, 0.48);
+
+    backdrop-filter:
+        blur(4px);
+
+    -webkit-backdrop-filter:
+        blur(4px);
+
+}
+
+
+.modal-contenido {
+
+    position: relative;
+
+    width: 100%;
+
+    max-height:
+        92vh;
+
+    overflow-y: auto;
+
+    background:
+        var(--color-superficie);
+
+    border-radius:
+        22px 22px 0 0;
+
+    padding:
+        21px 16px 25px;
+
+    box-shadow:
+        var(--sombra-fuerte);
+
+    animation:
+        subirModal 0.22s ease;
+
+}
+
+
+@keyframes subirModal {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(30px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+
+/* =========================================================
+   CABECERA MODAL
+========================================================= */
+
+.modal-cabecera {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    justify-content: space-between;
+
+    gap: 12px;
+
+    margin-bottom: 21px;
+
+}
+
+
+.modal-cabecera h2 {
+
+    font-size: 20px;
+
+    line-height: 1.2;
+
+    font-weight: 800;
+
+}
+
+
+.modal-cabecera p {
+
+    margin-top: 4px;
+
+    color:
+        var(--color-texto-secundario);
+
+    font-size: 12px;
+
+}
+
+
+.btn-cerrar {
+
+    width: 39px;
+
+    height: 39px;
+
+    padding: 0;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background:
+        var(--color-secundario);
+
+    color:
+        var(--color-texto-secundario);
+
+    font-size: 25px;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+}
+
+
+.btn-cerrar:hover {
+
+    background:
+        #e7ece9;
+
+    color:
+        var(--color-texto);
+
+}
+
+
+/* =========================================================
+   FORMULARIO
+========================================================= */
+
+.campo {
+
+    margin-bottom: 16px;
+
+}
+
+
+.campo label {
+
+    display: block;
+
+    margin-bottom: 7px;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+}
+
+
+.campo input,
+.campo select {
+
+    min-height: 50px;
+
+    font-size: 14px;
+
+}
+
+
+.campo input {
+
+    width: 100%;
+
+    padding:
+        0 13px;
+
+    border:
+        1px solid var(--color-borde);
+
+    border-radius:
+        var(--radio);
+
+    background:
+        var(--color-superficie);
+
+    color:
+        var(--color-texto);
+
+    outline: none;
+
+    font-family: inherit;
+
+    transition:
+        border-color var(--transicion),
+        box-shadow var(--transicion);
+
+}
+
+
+.campo input:focus {
+
+    border-color:
+        var(--color-principal);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(35, 132, 74, 0.09);
+
+}
+
+
+/* =========================================================
+   ACCIONES MODAL
+========================================================= */
+
+.modal-acciones {
+
+    display: grid;
+
+    grid-template-columns:
+        1fr;
+
+    gap: 9px;
+
+    margin-top: 22px;
+
+}
+
+
+.modal-acciones .btn {
+
+    width: 100%;
+
+}
+
+
+/* =========================================================
+   MODAL CONFIRMACIÓN
+========================================================= */
+
+.modal-confirmacion {
+
+    text-align: center;
+
+    padding-top: 28px;
+
+}
+
+
+.confirmacion-icono {
+
+    width: 68px;
+
+    height: 68px;
+
+    margin:
+        0 auto 16px;
+
+    border-radius:
+        20px;
+
+    background:
+        var(--color-aviso-claro);
+
+    color:
+        var(--color-aviso);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 30px;
+
+}
+
+
+.modal-confirmacion h2 {
+
+    font-size: 20px;
+
+    font-weight: 800;
+
+}
+
+
+.modal-confirmacion p {
+
+    margin-top: 7px;
+
+    color:
+        var(--color-texto-secundario);
+
+    font-size: 13px;
+
+}
+
+
+/* =========================================================
+   NOTIFICACIONES
+========================================================= */
+
+.notificacion {
+
+    position: fixed;
+
+    left: 14px;
+
+    right: 14px;
+
+    bottom: 20px;
+
+    z-index: 800;
+
+    min-height: 49px;
+
+    padding:
+        10px 14px;
+
+    border-radius:
+        var(--radio);
+
+    background:
+        #202822;
+
+    color: white;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    box-shadow:
+        var(--sombra-fuerte);
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transform:
+        translateY(15px);
+
+    transition:
+        opacity 0.2s ease,
+        transform 0.2s ease;
+
+}
+
+
+.notificacion.visible {
+
+    opacity: 1;
+
+    transform:
+        translateY(0);
+
+}
+
+
+#iconoNotificacion {
+
+    width: 22px;
+
+    height: 22px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+}
+
+
+.notificacion.exito {
+
+    background:
+        var(--color-principal-oscuro);
+
+}
+
+
+.notificacion.error {
+
+    background:
+        var(--color-peligro);
+
+}
+
+
+.notificacion.aviso {
+
+    background:
+        #795548;
+
+}
+
+
+/* =========================================================
+   CATÁLOGO
+========================================================= */
+
+.catalogo-card {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 11px;
+
+    padding:
+        13px;
+
+    background:
+        var(--color-superficie);
+
+    border:
+        1px solid var(--color-borde);
+
+    border-radius:
+        var(--radio);
+
+    box-shadow:
+        var(--sombra-suave);
+
+}
+
+
+.catalogo-card .producto-info {
+
+    flex: 1;
+
+    min-width: 0;
+
+}
+
+
+.catalogo-card .producto-controles {
+
+    gap: 3px;
+
+}
+
+
+/* =========================================================
+   ICONOS DE CATEGORÍA
+========================================================= */
+
+.icono-categoria {
+
+    width: 46px;
+
+    height: 46px;
+
+    border-radius:
+        12px;
+
+    background:
+        var(--color-principal-claro);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 22px;
+
+    flex-shrink: 0;
+
+}
+
+
+/* =========================================================
+   CLASES AUXILIARES
+========================================================= */
+
+.oculto {
+
+    display: none !important;
+
+}
+
+
+.sin-resultados {
+
+    padding:
+        20px;
+
+    text-align: center;
+
+    color:
+        var(--color-texto-secundario);
+
+    font-size: 13px;
+
+}
+
+
+.texto-comprado {
+
+    color:
+        var(--color-exito);
+
+    font-weight: 700;
+
+}
+
+
+/* =========================================================
+   SCROLLBAR
+========================================================= */
+
+::-webkit-scrollbar {
+
+    width: 7px;
+
+    height: 7px;
+
+}
+
+
+::-webkit-scrollbar-track {
+
+    background:
+        transparent;
+
+}
+
+
+::-webkit-scrollbar-thumb {
+
+    background:
+        #c7d0ca;
+
+    border-radius:
+        10px;
+
+}
+
+
+::-webkit-scrollbar-thumb:hover {
+
+    background:
+        #aeb9b1;
+
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (min-width: 600px) {
+
+    .contenido {
+
+        padding:
+            25px 22px 40px;
+
+    }
+
+
+    .filtros-productos {
+
+        grid-template-columns:
+            1fr 1fr;
+
+    }
+
+
+    .acciones-compra {
+
+        flex-direction: row;
+
+    }
+
+
+    .acciones-compra .btn {
+
+        flex: 1;
+
+    }
+
+
+    .modal {
+
+        align-items: center;
+
+        padding: 20px;
+
+    }
+
+
+    .modal-contenido {
+
+        max-width: 500px;
+
+        border-radius:
+            22px;
+
+        padding:
+            25px;
+
+        animation:
+            aparecerModal 0.2s ease;
+
+    }
+
+
+    @keyframes aparecerModal {
+
+        from {
+
+            opacity: 0;
+
+            transform:
+                scale(0.96);
+
+        }
+
+        to {
+
+            opacity: 1;
+
+            transform:
+                scale(1);
+
+        }
+
+    }
+
+
+    .modal-acciones {
+
+        grid-template-columns:
+            1fr 1fr;
+
+    }
+
+}
+
+
+/* =========================================================
+   ORDENADOR
+========================================================= */
+
+@media (min-width: 900px) {
+
+    body {
+
+        padding-bottom:
+            30px;
+
+    }
+
+
+    .cabecera-contenido {
+
+        min-height:
+            78px;
+
+        padding:
+            12px 28px;
+
+    }
+
+
+    .contenido {
+
+        padding:
+            30px 28px 50px;
+
+    }
+
+
+    .titulo-pagina h2 {
+
+        font-size: 28px;
+
+    }
+
+
+    /*
+       En ordenador la navegación sigue arriba,
+       pero queda centrada y con aspecto de panel.
+    */
+
+    .navegacion-inferior {
+
+        position: sticky;
+
+        top: 78px;
+
+        bottom: auto;
+
+        height: 58px;
+
+        width: 100%;
+
+        max-width: 1180px;
+
+        margin:
+            0 auto;
+
+        border:
+            1px solid var(--color-borde);
+
+        border-top:
+            none;
+
+        border-radius:
+            0 0 14px 14px;
+
+        box-shadow:
+            var(--sombra-suave);
+
+        justify-content:
+            center;
+
+    }
+
+
+    .nav-item {
+
+        flex:
+            0 0 200px;
+
+    }
+
+
+    .notificacion {
+
+        left: 50%;
+
+        right: auto;
+
+        width: 380px;
+
+        bottom: 25px;
+
+        transform:
+            translate(-50%, 15px);
+
+    }
+
+
+    .notificacion.visible {
+
+        transform:
+            translate(-50%, 0);
+
+    }
+
+}
+
+
+/* =========================================================
+   PANTALLAS GRANDES
+========================================================= */
+
+@media (min-width: 1200px) {
+
+    .contenido {
+
+        padding-left:
+            35px;
+
+        padding-right:
+            35px;
+
+    }
+
+}
+
+
+/* =========================================================
+   REDUCIR ANIMACIONES
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+
+        animation-duration:
+            0.01ms !important;
+
+        animation-iteration-count:
+            1 !important;
+
+        transition-duration:
+            0.01ms !important;
+
+        scroll-behavior:
+            auto !important;
+
+    }
+
+}
