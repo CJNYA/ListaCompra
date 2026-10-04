@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -6,7 +7,7 @@
     <!-- Adaptación principal a móviles -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <title>Mi Compra</title>
+    <title>MI COMPRA</title>
 
     <!-- Hoja de estilos -->
     <link rel="stylesheet" href="style.css">
@@ -25,8 +26,8 @@
                 <span class="logo-icono">🛒</span>
 
                 <div>
-                    <h1>Mi Compra</h1>
-                    <p>Lista de la compra</p>
+                    <h1>MI COMPRA</h1>
+                    <p>Lista de la Compra</p>
                 </div>
             </div>
 
@@ -39,6 +40,53 @@
         </div>
 
     </header>
+
+
+    <!-- =====================================================
+         NAVEGACIÓN PRINCIPAL
+         AHORA ESTÁ ARRIBA, ENTRE LA CABECERA Y EL CONTENIDO
+    ====================================================== -->
+    <nav class="navegacion-inferior">
+
+        <button
+            type="button"
+            id="navCompra"
+            class="nav-item activo"
+            data-pagina="paginaCompra"
+        >
+
+            <span class="nav-icono">🛒</span>
+
+            <span class="nav-texto">
+                Mi Compra
+            </span>
+
+            <span
+                id="contadorCompra"
+                class="contador-nav"
+            >
+                0
+            </span>
+
+        </button>
+
+
+        <button
+            type="button"
+            id="navProductos"
+            class="nav-item"
+            data-pagina="paginaProductos"
+        >
+
+            <span class="nav-icono">📦</span>
+
+            <span class="nav-texto">
+                Productos
+            </span>
+
+        </button>
+
+    </nav>
 
 
     <!-- =====================================================
@@ -55,7 +103,7 @@
             <div class="titulo-pagina">
 
                 <div>
-                    <h2>Mi compra</h2>
+                    <h2>Mi Compra</h2>
                     <p id="resumenCompra">
                         0 productos
                     </p>
@@ -132,7 +180,7 @@
                     id="btnMarcarTodos"
                     class="btn btn-principal"
                 >
-                    ✓ Marcar todo comprado
+                    ✓ Marcar todo Comprado
                 </button>
 
                 <button
@@ -140,7 +188,7 @@
                     id="btnVaciarCompra"
                     class="btn btn-secundario btn-peligro"
                 >
-                    🗑 Vaciar lista
+                    🗑 Vaciar Lista
                 </button>
 
             </div>
@@ -203,7 +251,10 @@
             <div class="filtros-productos">
 
                 <select id="filtroCategoria">
-                    <option value="">Todas las categorías</option>
+
+                    <option value="">
+                        Todas las categorías
+                    </option>
 
                     <option value="Fruta">Fruta</option>
                     <option value="Verdura">Verdura</option>
@@ -273,7 +324,7 @@
                     id="btnCrearPrimerProducto"
                     class="btn btn-principal"
                 >
-                    ＋ Crear producto
+                    ＋ Crear Producto
                 </button>
 
             </div>
@@ -281,54 +332,6 @@
         </section>
 
     </main>
-
-
-
-    <!-- =====================================================
-         NAVEGACIÓN INFERIOR
-         Principalmente pensada para móvil
-    ====================================================== -->
-    <nav class="navegacion-inferior">
-
-        <button
-            type="button"
-            id="navCompra"
-            class="nav-item activo"
-            data-pagina="paginaCompra"
-        >
-
-            <span class="nav-icono">🛒</span>
-
-            <span class="nav-texto">
-                Mi compra
-            </span>
-
-            <span
-                id="contadorCompra"
-                class="contador-nav"
-            >
-                0
-            </span>
-
-        </button>
-
-
-        <button
-            type="button"
-            id="navProductos"
-            class="nav-item"
-            data-pagina="paginaProductos"
-        >
-
-            <span class="nav-icono">📦</span>
-
-            <span class="nav-texto">
-                Productos
-            </span>
-
-        </button>
-
-    </nav>
 
 
 
@@ -354,7 +357,7 @@
 
                 <div>
                     <h2 id="tituloModalProducto">
-                        Nuevo producto
+                        Nuevo Producto
                     </h2>
 
                     <p>
@@ -384,7 +387,7 @@
                 <div class="campo">
 
                     <label for="nombreProducto">
-                        Nombre del producto
+                        Nombre del Producto
                     </label>
 
                     <input
@@ -509,7 +512,7 @@
                         id="btnGuardarProducto"
                         class="btn btn-principal"
                     >
-                        Guardar producto
+                        Guardar Producto
                     </button>
 
                 </div>
@@ -524,7 +527,6 @@
 
     <!-- =====================================================
          MODAL: CONFIRMACIÓN
-         Se utilizará para acciones como vaciar la lista
     ====================================================== -->
     <div
         id="modalConfirmacion"
