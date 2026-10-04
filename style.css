@@ -1490,9 +1490,45 @@ select:focus {
    CATÁLOGO
    ========================================================= */
 
-.catalogo-card {
+/* =========================================================
+   TARJETAS DEL CATÁLOGO
+   ========================================================= */
 
+.catalogo-card {
+    width: 100%;
     min-height: 94px;
+
+    padding: 14px;
+
+    background: #f1f3f3;
+
+    border: 1px solid #dfe4e1;
+    border-radius: 17px;
+
+    box-shadow:
+        0 3px 10px rgba(30, 55, 38, 0.08);
+
+    transition:
+        all var(--transicion);
+}
+
+.catalogo-card:hover {
+    transform: translateY(-2px);
+
+    background: #f6f8f7;
+
+    border-color: #c9d6cc;
+
+    box-shadow:
+        var(--sombra);
+}
+
+.catalogo-card .producto-info {
+    min-width: 0;
+}
+
+.catalogo-card .producto-controles {
+    flex-shrink: 0;
 }
 
 .catalogo-card .producto-info {
@@ -2314,6 +2350,12 @@ select:focus {
         border-radius:
             22px 22px 0 0;
     }
+
+    .catalogo-card {
+    width: 100%;
+    padding: 12px;
+    border-radius: 15px;
+}
 }
 
 
