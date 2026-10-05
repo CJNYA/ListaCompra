@@ -2320,12 +2320,15 @@ select:focus {
     flex: 0 1 auto;
 
     min-width: 0;
+    max-width: 100%;
 
     font-size: 14px;
 
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    white-space: normal;
+    overflow-wrap: break-word;
+    word-break: break-word;
+
+    line-height: 1.25;
 }
 
 /* Detalles: categoría + supermercado */
