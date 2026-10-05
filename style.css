@@ -2311,40 +2311,38 @@ select:focus {
     flex: 1;
 
     display: flex;
-    align-items: center;
-    gap: 8px;
+    flex-direction: column;
+    align-items: flex-start;
 
-    flex-wrap: wrap;
+    gap: 4px;
 }
 
 /* Nombre */
 .catalogo-card .producto-nombre {
-    flex: 0 1 auto;
-
+    width: 100%;
     min-width: 0;
-    max-width: 100%;
 
     font-size: 14px;
+    line-height: 1.25;
+    font-weight: 700;
 
     white-space: normal;
-    overflow-wrap: break-word;
-    word-break: break-word;
-
-    line-height: 1.25;
+    overflow-wrap: anywhere;
+    word-break: normal;
 }
 
 /* Detalles: categoría + supermercado */
 .catalogo-card .producto-detalles {
-    flex: 1;
+    width: 100%;
+    min-width: 0;
 
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
 
     gap: 5px;
 
     margin-top: 0;
-
-    min-width: 0;
 }
 
 /* Etiquetas */
