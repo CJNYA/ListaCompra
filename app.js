@@ -28,6 +28,10 @@ const CATEGORIAS = [
     "Congelados",
     "Limpieza",
     "Higiene",
+    "Frutos Secos",
+    "Belleza",
+    "Conservas",
+    "Especias",
     "Otros"
 ];
 
@@ -160,6 +164,8 @@ document.addEventListener("DOMContentLoaded", iniciarAplicacion);
 function iniciarAplicacion() {
 
     cargarDatos();
+
+    cargarProductosIniciales();
 
     configurarEventos();
 
@@ -403,6 +409,285 @@ function normalizarCantidad(valor) {
     }
 
     return numero;
+
+}
+
+/* =========================================================
+   PRODUCTOS INICIALES
+   Se cargan una sola vez.
+   Después funcionan como productos normales:
+   se pueden editar y eliminar.
+========================================================= */
+
+const CLAVE_PRODUCTOS_INICIALES =
+    "miCompra_productosIniciales_v1";
+
+
+const PRODUCTOS_INICIALES = [
+
+    /* =====================================================
+       SUPERMERCADO: OTROS
+    ===================================================== */
+
+    { nombre: "Manzana", categoria: "Fruta", supermercado: "Otros" },
+    { nombre: "Naranja", categoria: "Fruta", supermercado: "Otros" },
+    { nombre: "Melocotón", categoria: "Fruta", supermercado: "Otros" },
+    { nombre: "Nectarina", categoria: "Fruta", supermercado: "Otros" },
+    { nombre: "Limón", categoria: "Fruta", supermercado: "Otros" },
+    { nombre: "Sandía", categoria: "Fruta", supermercado: "Otros" },
+    { nombre: "Melón", categoria: "Fruta", supermercado: "Otros" },
+    { nombre: "Arándanos", categoria: "Fruta", supermercado: "Otros" },
+    { nombre: "Higos", categoria: "Fruta", supermercado: "Otros" },
+    { nombre: "Uvas", categoria: "Fruta", supermercado: "Otros" },
+    { nombre: "Mandarina", categoria: "Fruta", supermercado: "Otros" },
+    { nombre: "Mango", categoria: "Fruta", supermercado: "Otros" },
+    { nombre: "Chirimoya", categoria: "Fruta", supermercado: "Otros" },
+    { nombre: "Plátano", categoria: "Fruta", supermercado: "Otros" },
+    { nombre: "Piña", categoria: "Fruta", supermercado: "Otros" },
+    { nombre: "Cerezas", categoria: "Fruta", supermercado: "Otros" },
+    { nombre: "Fresas", categoria: "Fruta", supermercado: "Otros" },
+
+    { nombre: "Calabacín", categoria: "Verdura", supermercado: "Otros" },
+    { nombre: "Berenjena", categoria: "Verdura", supermercado: "Otros" },
+    { nombre: "Lechuga", categoria: "Verdura", supermercado: "Otros" },
+    { nombre: "Zanahoria", categoria: "Verdura", supermercado: "Otros" },
+    { nombre: "Tomate", categoria: "Verdura", supermercado: "Otros" },
+    { nombre: "Pimiento Verde", categoria: "Verdura", supermercado: "Otros" },
+    { nombre: "Pimiento Rojo", categoria: "Verdura", supermercado: "Otros" },
+    { nombre: "Pepino", categoria: "Verdura", supermercado: "Otros" },
+    { nombre: "Champiñones", categoria: "Verdura", supermercado: "Otros" },
+
+    { nombre: "Jamón Serrano", categoria: "Carne", supermercado: "Otros" },
+    { nombre: "Salchichón", categoria: "Carne", supermercado: "Otros" },
+    { nombre: "Chorizo", categoria: "Carne", supermercado: "Otros" },
+    { nombre: "Torreznos", categoria: "Carne", supermercado: "Otros" },
+    { nombre: "Filete Ternera", categoria: "Carne", supermercado: "Otros" },
+    { nombre: "Solomillo", categoria: "Carne", supermercado: "Otros" },
+    { nombre: "Panceta", categoria: "Carne", supermercado: "Otros" },
+    { nombre: "Filete Lomo", categoria: "Carne", supermercado: "Otros" },
+    { nombre: "Costillas", categoria: "Carne", supermercado: "Otros" },
+    { nombre: "Pechuga", categoria: "Carne", supermercado: "Otros" },
+    { nombre: "Muslo Pollo", categoria: "Carne", supermercado: "Otros" },
+    { nombre: "Alitas Pollo", categoria: "Carne", supermercado: "Otros" },
+    { nombre: "Pechuga Pavo", categoria: "Carne", supermercado: "Otros" },
+
+    { nombre: "Queso Curado", categoria: "Lácteos", supermercado: "Otros" },
+
+
+    /* =====================================================
+       SUPERMERCADO: FAMILIA
+    ===================================================== */
+
+    { nombre: "Leche GAZA Semidesnatada", categoria: "Lácteos", supermercado: "Familia" },
+    { nombre: "Yogures Griegos", categoria: "Lácteos", supermercado: "Familia" },
+
+    { nombre: "Rúcula Famila", categoria: "Verdura", supermercado: "Familia" },
+    { nombre: "Canónigos Familia", categoria: "Verdura", supermercado: "Familia" },
+    { nombre: "Endivia", categoria: "Verdura", supermercado: "Familia" },
+    { nombre: "Remolacha", categoria: "Verdura", supermercado: "Familia" },
+    { nombre: "Espinacas", categoria: "Verdura", supermercado: "Familia" },
+    { nombre: "Setas", categoria: "Verdura", supermercado: "Familia" },
+
+    { nombre: "Pan de Molde", categoria: "Panadería", supermercado: "Familia" },
+
+    { nombre: "Botellas Agua Teleno", categoria: "Otros", supermercado: "Familia" },
+    { nombre: "Galleta Relieve", categoria: "Otros", supermercado: "Familia" },
+    { nombre: "Nachos Natural", categoria: "Otros", supermercado: "Familia" },
+    { nombre: "Garrafa Agua Cautiva", categoria: "Otros", supermercado: "Familia" },
+
+
+    /* =====================================================
+       SUPERMERCADO: GADIS
+    ===================================================== */
+
+    { nombre: "Atún", categoria: "Pescado", supermercado: "Gadis" },
+    { nombre: "Lubina", categoria: "Pescado", supermercado: "Gadis" },
+    { nombre: "Salmón", categoria: "Pescado", supermercado: "Gadis" },
+    { nombre: "Bacalao", categoria: "Pescado", supermercado: "Gadis" },
+    { nombre: "Langostinos", categoria: "Pescado", supermercado: "Gadis" },
+    { nombre: "Almejas", categoria: "Pescado", supermercado: "Gadis" },
+    { nombre: "Gallo", categoria: "Pescado", supermercado: "Gadis" },
+    { nombre: "Rape", categoria: "Pescado", supermercado: "Gadis" },
+    { nombre: "Trucha", categoria: "Pescado", supermercado: "Gadis" },
+    { nombre: "Sardinas", categoria: "Pescado", supermercado: "Gadis" },
+
+
+    /* =====================================================
+       SUPERMERCADO: MERCADONA
+    ===================================================== */
+
+    { nombre: "Gazpacho Tradicional", categoria: "Verdura", supermercado: "Mercadona" },
+    { nombre: "Espinaca Baby", categoria: "Verdura", supermercado: "Mercadona" },
+    { nombre: "Canónigos", categoria: "Verdura", supermercado: "Mercadona" },
+
+    { nombre: "Perejil", categoria: "Especias", supermercado: "Mercadona" },
+    { nombre: "Ajo", categoria: "Especias", supermercado: "Mercadona" },
+    { nombre: "Cúrcuma", categoria: "Especias", supermercado: "Mercadona" },
+    { nombre: "Pimienta Negra", categoria: "Especias", supermercado: "Mercadona" },
+    { nombre: "Sal Yodada Fina", categoria: "Especias", supermercado: "Mercadona" },
+
+    { nombre: "Queso Rallado", categoria: "Lácteos", supermercado: "Mercadona" },
+
+    { nombre: "Empanada Atún", categoria: "Panadería", supermercado: "Mercadona" },
+    { nombre: "Saladitos", categoria: "Panadería", supermercado: "Mercadona" },
+    { nombre: "Pulgas de Pan", categoria: "Panadería", supermercado: "Mercadona" },
+    { nombre: "Regañas", categoria: "Panadería", supermercado: "Mercadona" },
+
+    { nombre: "Pechuga Pavo (Filete)", categoria: "Carne", supermercado: "Mercadona" },
+    { nombre: "Lagarto", categoria: "Carne", supermercado: "Mercadona" },
+    { nombre: "Contramuslos de Pavo", categoria: "Carne", supermercado: "Mercadona" },
+
+    { nombre: "Salmón Ahumado", categoria: "Pescado", supermercado: "Mercadona" },
+
+    { nombre: "Pimiento Asado en Tiras", categoria: "Conservas", supermercado: "Mercadona" },
+    { nombre: "Espárrago Mediano", categoria: "Conservas", supermercado: "Mercadona" },
+    { nombre: "Mejillón Natural", categoria: "Conservas", supermercado: "Mercadona" },
+    { nombre: "Caballa Aceite Oliva", categoria: "Conservas", supermercado: "Mercadona" },
+    { nombre: "Sardinillas Aceite Oliva", categoria: "Conservas", supermercado: "Mercadona" },
+    { nombre: "Caballa Tomate", categoria: "Conservas", supermercado: "Mercadona" },
+    { nombre: "Sardinillas Tomate", categoria: "Conservas", supermercado: "Mercadona" },
+    { nombre: "Calamar en Tinta", categoria: "Conservas", supermercado: "Mercadona" },
+    { nombre: "Berberechos", categoria: "Conservas", supermercado: "Mercadona" },
+    { nombre: "Mejillones Escabeche", categoria: "Conservas", supermercado: "Mercadona" },
+    { nombre: "Atún Aceite Oliva", categoria: "Conservas", supermercado: "Mercadona" },
+
+    { nombre: "Balsamo Labial (Reparador)", categoria: "Belleza", supermercado: "Mercadona" },
+    { nombre: "Polvo Compacto", categoria: "Belleza", supermercado: "Mercadona" },
+    { nombre: "Loción Corporal", categoria: "Belleza", supermercado: "Mercadona" },
+
+    { nombre: "Papel Húmedo WC", categoria: "Higiene", supermercado: "Mercadona" },
+    { nombre: "Toallitas Frescas y Perfumadas", categoria: "Higiene", supermercado: "Mercadona" },
+    { nombre: "Jabón Dermo (Manos)", categoria: "Higiene", supermercado: "Mercadona" },
+    { nombre: "Protección Cotton Normal (Salvaslit)", categoria: "Higiene", supermercado: "Mercadona" },
+
+    { nombre: "Detergente Frescura", categoria: "Limpieza", supermercado: "Mercadona" },
+    { nombre: "Agua Destilada", categoria: "Limpieza", supermercado: "Mercadona" },
+    { nombre: "Rollo Cocina Jumbo", categoria: "Limpieza", supermercado: "Mercadona" },
+    { nombre: "Ambientador Lavavajillas", categoria: "Limpieza", supermercado: "Mercadona" },
+    { nombre: "Bayetas", categoria: "Limpieza", supermercado: "Mercadona" },
+    { nombre: "Vinagre de Limpieza", categoria: "Limpieza", supermercado: "Mercadona" },
+    { nombre: "Toallitas Lavadora", categoria: "Limpieza", supermercado: "Mercadona" },
+    { nombre: "Lejía", categoria: "Limpieza", supermercado: "Mercadona" },
+    { nombre: "Limpia Hogar Aloe Vera", categoria: "Limpieza", supermercado: "Mercadona" },
+    { nombre: "Jabón Baños", categoria: "Limpieza", supermercado: "Mercadona" },
+
+    { nombre: "Hinojo (Infusión)", categoria: "Otros", supermercado: "Mercadona" },
+    { nombre: "Frutos Rojos (Infusión)", categoria: "Otros", supermercado: "Mercadona" },
+    { nombre: "Cereales Copos de Maíz", categoria: "Otros", supermercado: "Mercadona" },
+    { nombre: "Cereales Avena Cacao", categoria: "Otros", supermercado: "Mercadona" },
+    { nombre: "Arándanos (Infusión)", categoria: "Otros", supermercado: "Mercadona" },
+    { nombre: "Pizzas Jamón y Queso", categoria: "Otros", supermercado: "Mercadona" },
+    { nombre: "Cacao 85%", categoria: "Otros", supermercado: "Mercadona" },
+    { nombre: "Chocolatinas Cacao 85%", categoria: "Otros", supermercado: "Mercadona" },
+    { nombre: "Digestiva (Infusión)", categoria: "Otros", supermercado: "Mercadona" },
+    { nombre: "Bolsas Basura", categoria: "Otros", supermercado: "Mercadona" },
+    { nombre: "Pañuelos", categoria: "Otros", supermercado: "Mercadona" },
+    { nombre: "Palomitas", categoria: "Otros", supermercado: "Mercadona" },
+    { nombre: "Bolsa Patatas Fritas", categoria: "Otros", supermercado: "Mercadona" },
+
+    { nombre: "Cacahuete Sin Sal", categoria: "Frutos Secos", supermercado: "Mercadona" },
+    { nombre: "Pistacho Tostado", categoria: "Frutos Secos", supermercado: "Mercadona" },
+    { nombre: "Almendra Tostadas Sin Piel", categoria: "Frutos Secos", supermercado: "Mercadona" },
+    { nombre: "Anacardo Natural", categoria: "Frutos Secos", supermercado: "Mercadona" },
+    { nombre: "Pipas Calabaza Natural", categoria: "Frutos Secos", supermercado: "Mercadona" },
+    { nombre: "Maíz Frito Gigante", categoria: "Frutos Secos", supermercado: "Mercadona" },
+    { nombre: "Nuez Natural", categoria: "Frutos Secos", supermercado: "Mercadona" }
+
+];
+
+
+/* =========================================================
+   CARGAR PRODUCTOS INICIALES
+========================================================= */
+
+function cargarProductosIniciales() {
+
+    /*
+     * Comprobar si esta lista ya fue cargada.
+     * Si ya se cargó una vez, no vuelve a aparecer.
+     */
+
+    if (
+        localStorage.getItem(
+            CLAVE_PRODUCTOS_INICIALES
+        ) === "true"
+    ) {
+
+        return;
+
+    }
+
+
+    let productosAñadidos = 0;
+
+
+    PRODUCTOS_INICIALES.forEach(productoInicial => {
+
+        const nombreNormalizado =
+            normalizarTexto(productoInicial.nombre);
+
+
+        const existe =
+            catalogo.some(producto => {
+
+                return (
+                    normalizarTexto(producto.nombre) ===
+                    nombreNormalizado
+                );
+
+            });
+
+
+        /*
+         * Si ya existe un producto con ese nombre,
+         * no lo duplicamos.
+         */
+
+        if (existe) {
+
+            return;
+
+        }
+
+
+        catalogo.push({
+
+            id: generarId(),
+
+            nombre:
+                productoInicial.nombre,
+
+            categoria:
+                productoInicial.categoria,
+
+            supermercado:
+                productoInicial.supermercado
+
+        });
+
+
+        productosAñadidos++;
+
+    });
+
+
+    /*
+     * Marcar la lista como cargada.
+     * A partir de aquí los productos son normales
+     * y se pueden editar o eliminar.
+     */
+
+    localStorage.setItem(
+        CLAVE_PRODUCTOS_INICIALES,
+        "true"
+    );
+
+
+    if (productosAñadidos > 0) {
+
+        guardarDatos();
+
+    }
 
 }
 
@@ -777,6 +1062,14 @@ function obtenerIconoCategoria(categoria) {
         "Limpieza": "🧽",
 
         "Higiene": "🧴",
+
+        "Frutos Secos": "🥜",
+
+        "Belleza": "💄",
+
+        "Conservas": "🥫",
+
+        "Especias": "🧂",
 
         "Otros": "📦"
 

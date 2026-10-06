@@ -11,6 +11,10 @@
 
     <!-- Hoja de estilos -->
     <link rel="stylesheet" href="style.css">
+
+    <!-- PWA -->
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#2e7d32">
 </head>
 
 <body>
@@ -267,6 +271,10 @@
                     <option value="Congelados">Congelados</option>
                     <option value="Limpieza">Limpieza</option>
                     <option value="Higiene">Higiene</option>
+                    <option value="Frutos Secos">Frutos Secos</option>
+                    <option value="Belleza">Belleza</option>
+                    <option value="Conservas">Conservas</option>
+                    <option value="Especias">Especias</option>
                     <option value="Otros">Otros</option>
 
                 </select>
@@ -428,6 +436,10 @@
                         <option value="Congelados">Congelados</option>
                         <option value="Limpieza">Limpieza</option>
                         <option value="Higiene">Higiene</option>
+                        <option value="Frutos Secos">Frutos Secos</option>
+                        <option value="Belleza">Belleza</option>
+                        <option value="Conservas">Conservas</option>
+                        <option value="Especias">Especias</option>
                         <option value="Otros">Otros</option>
 
                     </select>
@@ -605,6 +617,24 @@
          JAVASCRIPT
     ====================================================== -->
     <script src="app.js"></script>
+
+    <!-- =====================================================
+     PWA
+===================================================== -->
+
+    <script>
+    if ("serviceWorker" in navigator) {
+        window.addEventListener("load", function () {
+            navigator.serviceWorker.register("sw.js")
+                .then(function () {
+                    console.log("Service Worker registrado correctamente");
+                })
+                .catch(function (error) {
+                    console.error("Error registrando Service Worker:", error);
+                });
+        });
+    }
+</script>
 
 </body>
 </html>
