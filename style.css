@@ -2489,7 +2489,7 @@ select:focus-visible {
 
     padding: 10px 12px;
 
-    background: rgba(255, 255, 255, 0.75);
+    background: rgba(228, 229, 126, 0.75);
     border: 1px solid var(--borde);
     border-radius: 12px;
 }
