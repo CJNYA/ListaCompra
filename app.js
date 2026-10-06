@@ -70,6 +70,8 @@ let accionConfirmacion = null;
 
 let temporizadorNotificacion = null;
 
+let ordenCompra = "todos";
+
 
 /* =========================================================
    REFERENCIAS HTML
@@ -107,6 +109,9 @@ const contadorCompra =
 
 const buscarCompra =
     document.getElementById("buscarCompra");
+
+    const ordenarCompra =
+    document.getElementById("ordenarCompra");
 
 const buscarProducto =
     document.getElementById("buscarProducto");
@@ -803,6 +808,26 @@ function configurarEventos() {
         "input",
         dibujarResultadosCompra
     );
+
+    /* ---------------------------------------------
+   ORDENAR LISTA DE COMPRA
+--------------------------------------------- */
+
+if (ordenarCompra) {
+
+    ordenarCompra.addEventListener(
+        "change",
+        () => {
+
+            ordenCompra =
+                ordenarCompra.value;
+
+            dibujarListaCompra();
+
+        }
+    );
+
+}
 
 
     /* ---------------------------------------------
@@ -2017,19 +2042,31 @@ function añadirProductoCompra(idProducto) {
    DIBUJAR LISTA DE COMPRA
 ========================================================= */
 
+/* =========================================================
+   DIBUJAR LISTA DE COMPRA
+========================================================= */
+
 function dibujarListaCompra() {
 
     listaCompraHTML.innerHTML = "";
 
 
     /*
-     * Preferentes primero.
-     * Después pendientes.
-     * Finalmente comprados.
+     * -----------------------------------------------------
+     * FUNCIÓN PARA ORDENAR LOS PRODUCTOS
+     * -----------------------------------------------------
+     *
+     * Mantiene siempre:
+     *
+     * 1. Preferentes
+     * 2. Pendientes
+     * 3. Comprados
+     * 4. Nombre alfabético
      */
 
-    const elementos =
-        [...listaCompra].sort((a, b) => {
+    function ordenarElementos(elementos) {
+
+        return [...elementos].sort((a, b) => {
 
             if (
                 a.preferente !==
@@ -2065,15 +2102,250 @@ function dibujarListaCompra() {
 
         });
 
+    }
 
-    elementos.forEach(item => {
 
-        listaCompraHTML.appendChild(
-            crearTarjetaCompra(item)
-        );
+    /*
+     * -----------------------------------------------------
+     * MODO NORMAL
+     * -----------------------------------------------------
+     *
+     * Es exactamente el comportamiento que ya tenías.
+     */
 
-    });
+    if (
+        ordenCompra === "todos" ||
+        !ordenCompra
+    ) {
 
+        const elementos =
+            ordenarElementos(listaCompra);
+
+
+        elementos.forEach(item => {
+
+            listaCompraHTML.appendChild(
+                crearTarjetaCompra(item)
+            );
+
+        });
+
+    }
+
+
+    /*
+     * -----------------------------------------------------
+     * AGRUPAR POR CATEGORÍA
+     * -----------------------------------------------------
+     */
+
+    else if (
+        ordenCompra === "categoria"
+    ) {
+
+        const grupos = {};
+
+
+        listaCompra.forEach(item => {
+
+            const nombreGrupo =
+                item.categoria ||
+                "Otros";
+
+
+            if (!grupos[nombreGrupo]) {
+
+                grupos[nombreGrupo] = [];
+
+            }
+
+
+            grupos[nombreGrupo].push(item);
+
+        });
+
+
+        const nombresGrupos =
+            Object.keys(grupos).sort(
+                (a, b) =>
+                    a.localeCompare(
+                        b,
+                        "es",
+                        {
+                            sensitivity: "base"
+                        }
+                    )
+            );
+
+
+        nombresGrupos.forEach(nombreGrupo => {
+
+            const grupo =
+                document.createElement("div");
+
+            grupo.className =
+                "grupo-compra";
+
+
+            const titulo =
+                document.createElement("div");
+
+            titulo.className =
+                "grupo-compra-titulo";
+
+
+            titulo.innerHTML = `
+                <span>
+                    ${obtenerIconoCategoria(nombreGrupo)}
+                </span>
+
+                <span>
+                    ${escaparHTML(nombreGrupo)}
+                </span>
+            `;
+
+
+            const listaGrupo =
+                document.createElement("div");
+
+            listaGrupo.className =
+                "grupo-compra-lista";
+
+
+            const elementosGrupo =
+                ordenarElementos(
+                    grupos[nombreGrupo]
+                );
+
+
+            elementosGrupo.forEach(item => {
+
+                listaGrupo.appendChild(
+                    crearTarjetaCompra(item)
+                );
+
+            });
+
+
+            grupo.appendChild(titulo);
+
+            grupo.appendChild(listaGrupo);
+
+            listaCompraHTML.appendChild(grupo);
+
+        });
+
+    }
+
+
+    /*
+     * -----------------------------------------------------
+     * AGRUPAR POR SUPERMERCADO
+     * -----------------------------------------------------
+     */
+
+    else if (
+        ordenCompra === "supermercado"
+    ) {
+
+        const grupos = {};
+
+
+        listaCompra.forEach(item => {
+
+            const nombreGrupo =
+                item.supermercado ||
+                "Otros";
+
+
+            if (!grupos[nombreGrupo]) {
+
+                grupos[nombreGrupo] = [];
+
+            }
+
+
+            grupos[nombreGrupo].push(item);
+
+        });
+
+
+        const nombresGrupos =
+            Object.keys(grupos).sort(
+                (a, b) =>
+                    a.localeCompare(
+                        b,
+                        "es",
+                        {
+                            sensitivity: "base"
+                        }
+                    )
+            );
+
+
+        nombresGrupos.forEach(nombreGrupo => {
+
+            const grupo =
+                document.createElement("div");
+
+            grupo.className =
+                "grupo-compra";
+
+
+            const titulo =
+                document.createElement("div");
+
+            titulo.className =
+                "grupo-compra-titulo";
+
+
+            titulo.innerHTML = `
+                <span>🏪</span>
+
+                <span>
+                    ${escaparHTML(nombreGrupo)}
+                </span>
+            `;
+
+
+            const listaGrupo =
+                document.createElement("div");
+
+            listaGrupo.className =
+                "grupo-compra-lista";
+
+
+            const elementosGrupo =
+                ordenarElementos(
+                    grupos[nombreGrupo]
+                );
+
+
+            elementosGrupo.forEach(item => {
+
+                listaGrupo.appendChild(
+                    crearTarjetaCompra(item)
+                );
+
+            });
+
+
+            grupo.appendChild(titulo);
+
+            grupo.appendChild(listaGrupo);
+
+            listaCompraHTML.appendChild(grupo);
+
+        });
+
+    }
+
+
+    /*
+     * -----------------------------------------------------
+     * ESTADO DE LA LISTA
+     * -----------------------------------------------------
+     */
 
     if (listaCompra.length === 0) {
 

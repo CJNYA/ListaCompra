@@ -2374,6 +2374,31 @@ select:focus {
 
     font-size: 15px;
 }
+
+.orden-compra {
+    width: 100%;
+    margin-top: 8px;
+    margin-bottom: 12px;
+    padding: 9px 10px;
+}
+
+.orden-compra label {
+    font-size: 12px;
+}
+
+.orden-compra select {
+    font-size: 12px;
+    padding: 8px;
+}
+
+.grupo-compra {
+    margin-top: 15px;
+}
+
+.grupo-compra-titulo {
+    font-size: 13px;
+    padding: 7px 9px;
+}
 }
 
 
@@ -2448,4 +2473,79 @@ select:focus-visible {
 
         transition-duration: 0.01ms !important;
     }
+}
+
+/* =========================================================
+   ORDENAR LISTA DE COMPRA
+   ========================================================= */
+
+.orden-compra {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    margin-top: 10px;
+    margin-bottom: 14px;
+
+    padding: 10px 12px;
+
+    background: rgba(255, 255, 255, 0.75);
+    border: 1px solid var(--borde);
+    border-radius: 12px;
+}
+
+.orden-compra label {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--texto);
+}
+
+.orden-compra select {
+    flex: 1;
+
+    min-width: 0;
+
+    padding: 8px 10px;
+
+    border: 1px solid var(--borde);
+    border-radius: 9px;
+
+    background: white;
+    color: var(--texto);
+
+    font-size: 13px;
+    font-weight: 600;
+}
+
+/* Títulos de los grupos */
+.grupo-compra {
+    margin-top: 18px;
+}
+
+.grupo-compra:first-child {
+    margin-top: 0;
+}
+
+.grupo-compra-titulo {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+
+    margin-bottom: 8px;
+
+    padding: 7px 10px;
+
+    background: #e8f1ea;
+    border-left: 4px solid var(--verde-principal);
+    border-radius: 8px;
+
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--texto);
+}
+
+.grupo-compra-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
