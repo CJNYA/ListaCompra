@@ -1,0 +1,650 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+
+    <!-- Adaptación principal a móviles -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>MI COMPRA</title>
+
+    <!-- Hoja de estilos -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- PWA -->
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#2e7d32">
+</head>
+
+<body>
+
+    <!-- =====================================================
+         CABECERA
+    ====================================================== -->
+    <header class="cabecera">
+
+        <div class="cabecera-contenido">
+
+            <div class="logo">
+                <span class="logo-icono">🛒</span>
+
+                <div>
+                    <h1>MI COMPRA</h1>
+                    <p>Lista de la Compra</p>
+                </div>
+            </div>
+
+            <!-- Estado de conexión, preparado para Firebase -->
+            <div id="estadoConexion" class="estado-conexion">
+                <span class="estado-punto"></span>
+                <span id="textoConexion">Guardado local</span>
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- =====================================================
+         NAVEGACIÓN PRINCIPAL
+         AHORA ESTÁ ARRIBA, ENTRE LA CABECERA Y EL CONTENIDO
+    ====================================================== -->
+    <nav class="navegacion-inferior">
+
+        <button
+            type="button"
+            id="navCompra"
+            class="nav-item activo"
+            data-pagina="paginaCompra"
+        >
+
+            <span class="nav-icono">🛒</span>
+
+            <span class="nav-texto">
+                Mi Compra
+            </span>
+
+            <span
+                id="contadorCompra"
+                class="contador-nav"
+            >
+                0
+            </span>
+
+        </button>
+
+
+        <button
+            type="button"
+            id="navProductos"
+            class="nav-item"
+            data-pagina="paginaProductos"
+        >
+
+            <span class="nav-icono">📦</span>
+
+            <span class="nav-texto">
+                Productos
+            </span>
+
+        </button>
+
+    </nav>
+
+
+    <!-- =====================================================
+         CONTENIDO PRINCIPAL
+    ====================================================== -->
+    <main class="contenido">
+
+
+        <!-- =================================================
+             PÁGINA: MI COMPRA
+        ================================================== -->
+        <section id="paginaCompra" class="pagina activa">
+
+            <div class="titulo-pagina">
+
+                <div>
+                    <h2>Mi Compra</h2>
+                    <p id="resumenCompra">
+                        0 productos
+                    </p>
+                </div>
+
+            </div>
+
+
+            <!-- Buscador para añadir productos -->
+            <div class="buscador">
+
+                <span class="icono-busqueda">🔎</span>
+
+                <input
+                    type="search"
+                    id="buscarCompra"
+                    placeholder="Buscar producto para añadir..."
+                    autocomplete="off"
+                >
+
+                <button
+                    type="button"
+                    id="limpiarBusquedaCompra"
+                    class="btn-limpiar-busqueda"
+                    aria-label="Limpiar búsqueda"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <!-- Resultados del catálogo para añadir a la compra -->
+            <div
+                id="resultadosCompra"
+                class="resultados-busqueda"
+            >
+            </div>
+
+            <div class="orden-compra">
+    <label for="ordenarCompra">Ordenar por:</label>
+
+    <select id="ordenarCompra">
+        <option value="todos">Todos</option>
+        <option value="categoria">Categoría</option>
+        <option value="supermercado">Supermercado</option>
+    </select>
+</div>
+
+
+            <!-- Lista de productos de la compra -->
+            <div id="listaCompra" class="lista-productos">
+
+                <!-- El JavaScript rellenará esta zona -->
+
+            </div>
+
+
+            <!-- Mensaje cuando no hay productos -->
+            <div
+                id="compraVacia"
+                class="estado-vacio"
+            >
+
+                <div class="estado-vacio-icono">🛒</div>
+
+                <h3>Tu lista está vacía</h3>
+
+                <p>
+                    Busca un producto arriba para añadirlo a tu compra.
+                </p>
+
+            </div>
+
+
+            <!-- Acciones de la compra -->
+            <div
+                id="accionesCompra"
+                class="acciones-compra"
+            >
+
+                <button
+                    type="button"
+                    id="btnMarcarTodos"
+                    class="btn btn-principal"
+                >
+                    ✓ Marcar todo Comprado
+                </button>
+
+                <button
+                    type="button"
+                    id="btnVaciarCompra"
+                    class="btn btn-secundario btn-peligro"
+                >
+                    🗑 Vaciar Lista
+                </button>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             PÁGINA: PRODUCTOS / CATÁLOGO
+        ================================================== -->
+        <section id="paginaProductos" class="pagina">
+
+            <div class="titulo-pagina">
+
+                <div>
+                    <h2>Productos</h2>
+                    <p>
+                        Gestiona tus productos habituales
+                    </p>
+                </div>
+
+                <button
+                    type="button"
+                    id="btnNuevoProducto"
+                    class="btn btn-principal btn-nuevo"
+                >
+                    <span>＋</span>
+                    <span>Nuevo</span>
+                </button>
+
+            </div>
+
+
+            <!-- Buscador del catálogo -->
+            <div class="buscador">
+
+                <span class="icono-busqueda">🔎</span>
+
+                <input
+                    type="search"
+                    id="buscarProducto"
+                    placeholder="Buscar producto..."
+                    autocomplete="off"
+                >
+
+                <button
+                    type="button"
+                    id="limpiarBusquedaProducto"
+                    class="btn-limpiar-busqueda"
+                    aria-label="Limpiar búsqueda"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <!-- Filtros -->
+            <div class="filtros-productos">
+
+                <select id="filtroCategoria">
+
+                    <option value="">
+                        Todas las categorías
+                    </option>
+
+                    <option value="Fruta">Fruta</option>
+                    <option value="Verdura">Verdura</option>
+                    <option value="Huevos">Huevos</option>
+                    <option value="Carne">Carne</option>
+                    <option value="Pescado">Pescado</option>
+                    <option value="Lácteos">Lácteos</option>
+                    <option value="Panadería">Panadería</option>
+                    <option value="Bebidas">Bebidas</option>
+                    <option value="Congelados">Congelados</option>
+                    <option value="Limpieza">Limpieza</option>
+                    <option value="Higiene">Higiene</option>
+                    <option value="Frutos Secos">Frutos Secos</option>
+                    <option value="Belleza">Belleza</option>
+                    <option value="Conservas">Conservas</option>
+                    <option value="Especias">Especias</option>
+                    <option value="Otros">Otros</option>
+
+                </select>
+
+
+                <select id="filtroSupermercado">
+
+                    <option value="">
+                        Todos los supermercados
+                    </option>
+
+                    <option value="Mercadona">Mercadona</option>
+                    <option value="Carrefour">Carrefour</option>
+                    <option value="Familia">Familia</option>
+                    <option value="Gadis">Gadis</option>
+                    <option value="Lupa">Lupa</option>
+                    <option value="Hipercor">Hipercor</option>
+                    <option value="Lidl">Lidl</option>
+                    <option value="Alcampo">Alcampo</option>
+                    <option value="MasyMas">MasyMas</option>
+                    <option value="Otros">Otros</option>
+
+                </select>
+
+            </div>
+
+
+            <!-- Lista del catálogo -->
+            <div
+                id="catalogoProductos"
+                class="catalogo-productos"
+            >
+
+                <!-- El JavaScript rellenará esta zona -->
+
+            </div>
+
+
+            <!-- Catálogo vacío -->
+            <div
+                id="catalogoVacio"
+                class="estado-vacio"
+            >
+
+                <div class="estado-vacio-icono">📦</div>
+
+                <h3>No hay productos</h3>
+
+                <p>
+                    Crea tu primer producto para empezar.
+                </p>
+
+                <button
+                    type="button"
+                    id="btnCrearPrimerProducto"
+                    class="btn btn-principal"
+                >
+                    ＋ Crear Producto
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- =====================================================
+         MODAL: NUEVO / EDITAR PRODUCTO
+    ====================================================== -->
+    <div
+        id="modalProducto"
+        class="modal"
+        aria-hidden="true"
+    >
+
+        <div class="modal-fondo"></div>
+
+        <div
+            class="modal-contenido"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="tituloModalProducto"
+        >
+
+            <div class="modal-cabecera">
+
+                <div>
+                    <h2 id="tituloModalProducto">
+                        Nuevo Producto
+                    </h2>
+
+                    <p>
+                        Añade un producto a tu catálogo
+                    </p>
+                </div>
+
+                <button
+                    type="button"
+                    id="btnCerrarModalProducto"
+                    class="btn-cerrar"
+                    aria-label="Cerrar"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <!-- Formulario -->
+            <form
+                id="formProducto"
+                autocomplete="off"
+            >
+
+                <!-- Nombre -->
+                <div class="campo">
+
+                    <label for="nombreProducto">
+                        Nombre del Producto
+                    </label>
+
+                    <input
+                        type="text"
+                        id="nombreProducto"
+                        placeholder="Ej.: Leche entera"
+                        maxlength="100"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- Categoría -->
+                <div class="campo">
+
+                    <label for="categoriaProducto">
+                        Categoría
+                    </label>
+
+                    <select
+                        id="categoriaProducto"
+                        required
+                    >
+
+                        <option value="">
+                            Selecciona una categoría
+                        </option>
+
+                        <option value="Fruta">Fruta</option>
+                        <option value="Verdura">Verdura</option>
+                        <option value="Huevos">Huevos</option>
+                        <option value="Carne">Carne</option>
+                        <option value="Pescado">Pescado</option>
+                        <option value="Lácteos">Lácteos</option>
+                        <option value="Panadería">Panadería</option>
+                        <option value="Bebidas">Bebidas</option>
+                        <option value="Congelados">Congelados</option>
+                        <option value="Limpieza">Limpieza</option>
+                        <option value="Higiene">Higiene</option>
+                        <option value="Frutos Secos">Frutos Secos</option>
+                        <option value="Belleza">Belleza</option>
+                        <option value="Conservas">Conservas</option>
+                        <option value="Especias">Especias</option>
+                        <option value="Otros">Otros</option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- Supermercado -->
+                <div class="campo">
+
+                    <label for="supermercadoProducto">
+                        Supermercado habitual
+                    </label>
+
+                    <select
+                        id="supermercadoProducto"
+                        required
+                    >
+
+                        <option value="">
+                            Selecciona un supermercado
+                        </option>
+
+                        <option value="Mercadona">
+                            Mercadona
+                        </option>
+
+                        <option value="Carrefour">
+                            Carrefour
+                        </option>
+
+                        <option value="Familia">
+                            Familia
+                        </option>
+
+                        <option value="Gadis">
+                            Gadis
+                        </option>
+
+                        <option value="Lupa">
+                            Lupa
+                        </option>
+
+                        <option value="Hipercor">
+                            Hipercor
+                        </option>
+
+                        <option value="Lidl">
+                            Lidl
+                        </option>
+
+                        <option value="Alcampo">
+                            Alcampo
+                        </option>
+
+                        <option value="MasyMas">
+                            MasyMas
+                        </option>
+
+                        <option value="Otros">
+                            Otros
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- Botones -->
+                <div class="modal-acciones">
+
+                    <button
+                        type="button"
+                        id="btnCancelarProducto"
+                        class="btn btn-secundario"
+                    >
+                        Cancelar
+                    </button>
+
+                    <button
+                        type="submit"
+                        id="btnGuardarProducto"
+                        class="btn btn-principal"
+                    >
+                        Guardar Producto
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         MODAL: CONFIRMACIÓN
+    ====================================================== -->
+    <div
+        id="modalConfirmacion"
+        class="modal"
+        aria-hidden="true"
+    >
+
+        <div class="modal-fondo"></div>
+
+        <div
+            class="modal-contenido modal-confirmacion"
+            role="dialog"
+            aria-modal="true"
+        >
+
+            <div class="confirmacion-icono">
+                ⚠️
+            </div>
+
+            <h2 id="tituloConfirmacion">
+                ¿Estás seguro?
+            </h2>
+
+            <p id="textoConfirmacion">
+                Esta acción no se puede deshacer.
+            </p>
+
+            <div class="modal-acciones">
+
+                <button
+                    type="button"
+                    id="btnCancelarConfirmacion"
+                    class="btn btn-secundario"
+                >
+                    Cancelar
+                </button>
+
+                <button
+                    type="button"
+                    id="btnAceptarConfirmacion"
+                    class="btn btn-peligro"
+                >
+                    Confirmar
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         MENSAJES / NOTIFICACIONES
+    ====================================================== -->
+    <div
+        id="notificacion"
+        class="notificacion"
+        aria-live="polite"
+    >
+
+        <span id="iconoNotificacion">
+            ✓
+        </span>
+
+        <span id="textoNotificacion">
+            Guardado correctamente
+        </span>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+    <script src="app.js"></script>
+
+    <!-- =====================================================
+     PWA
+===================================================== -->
+
+    <script>
+    if ("serviceWorker" in navigator) {
+        window.addEventListener("load", function () {
+            navigator.serviceWorker.register("sw.js")
+                .then(function () {
+                    console.log("Service Worker registrado correctamente");
+                })
+                .catch(function (error) {
+                    console.error("Error registrando Service Worker:", error);
+                });
+        });
+    }
+</script>
+
+</body>
+</html>
