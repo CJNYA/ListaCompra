@@ -1,4 +1,4 @@
-const CACHE_NAME = "mi-compra-v1";
+const CACHE_NAME = "mi-compra-v2";
 
 const ARCHIVOS_CACHE = [
     "./",
@@ -51,10 +51,13 @@ self.addEventListener("activate", event => {
                 );
 
             })
+            .then(() => {
+
+                return self.clients.claim();
+
+            })
 
     );
-
-    self.clients.claim();
 
 });
 
@@ -65,19 +68,30 @@ self.addEventListener("activate", event => {
 
 self.addEventListener("fetch", event => {
 
+    if (event.request.method !== "GET") {
+        return;
+    }
+
     event.respondWith(
 
-        caches.match(event.request)
-            .then(respuestaCache => {
+        fetch(event.request)
+            .then(respuestaRed => {
 
-                if (respuestaCache) {
+                const copia = respuestaRed.clone();
 
-                    return respuestaCache;
+                caches.open(CACHE_NAME)
+                    .then(cache => {
 
-                }
+                        cache.put(event.request, copia);
 
+                    });
 
-                return fetch(event.request);
+                return respuestaRed;
+
+            })
+            .catch(() => {
+
+                return caches.match(event.request);
 
             })
 
