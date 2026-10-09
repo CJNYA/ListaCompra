@@ -1,0 +1,25 @@
+{
+    "name": "MI COMPRA",
+    "short_name": "Mi Compra",
+    "id": "./",
+    "description": "Lista de la compra y catálogo de productos",
+    "lang": "es",
+    "start_url": "./",
+    "scope": "./",
+    "display": "standalone",
+    "orientation": "portrait",
+    "background_color": "#eef5ef",
+    "theme_color": "#2e7d32",
+    "icons": [
+        {
+            "src": "icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}
