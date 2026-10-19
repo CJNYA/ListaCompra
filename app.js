@@ -50,6 +50,7 @@ const SUPERMERCADOS = [
     "Lidl",
     "Alcampo",
     "MasyMas",
+    "Aldi",
     "Otros"
 ];
 
@@ -694,6 +695,8 @@ function cargarProductosIniciales() {
 
     }
 
+    actualizarContadorProductos();
+
 }
 
 
@@ -1054,6 +1057,25 @@ function dibujarTodo() {
     dibujarCatalogo();
 
     actualizarContadores();
+
+     actualizarContadorProductos();
+
+}
+
+/* =========================================================
+   ACTUALIZAR CONTADOR DE PRODUCTOS
+========================================================= */
+
+function actualizarContadorProductos() {
+
+    const contador =
+        document.getElementById("contadorProductos");
+
+    if (!contador) {
+        return;
+    }
+
+    contador.textContent = catalogo.length;
 
 }
 
@@ -3438,6 +3460,23 @@ window.miCompra = {
     }
 
 };
+
+/* =========================================================
+   ACTUALIZAR CONTADOR DE PRODUCTOS
+========================================================= */
+
+function actualizarContadorProductos() {
+
+    const contador =
+        document.getElementById("contadorProductos");
+
+    if (!contador) {
+        return;
+    }
+
+    contador.textContent = catalogo.length;
+
+}
 
 
 /* =========================================================
